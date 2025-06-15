@@ -56,9 +56,9 @@ const Navbar = () => {
     };
 
     return (
-        <div className="w-full">
+        <div className="w-full ">
             {/* Search bar */}
-            <div className="max-w-full mx-auto px-4 md:px-8 py-1">
+            <div className="max-w-full  mx-auto px-4 md:px-8 py-1">
                 <Search />
             </div>
 
