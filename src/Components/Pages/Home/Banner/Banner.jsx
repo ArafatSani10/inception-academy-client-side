@@ -1,100 +1,95 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import lottieData from '../../../../assets/Animation - 1750081911908.json';
 
 const Banner = () => {
+  const aiRef = useRef(null);
+  const animationInstance = useRef(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    import('lottie-web').then((lottie) => {
+      // ✅ Destroy previous instance if exists
+      if (animationInstance.current) {
+        animationInstance.current.destroy();
+      }
+
+      // ✅ Only load if ref and component still mounted
+      if (aiRef.current && isMounted) {
+        animationInstance.current = lottie.loadAnimation({
+          container: aiRef.current,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          animationData: lottieData,
+        });
+      }
+    });
+
+    // ✅ Cleanup on unmount
+    return () => {
+      isMounted = false;
+      if (animationInstance.current) {
+        animationInstance.current.destroy();
+        animationInstance.current = null;
+      }
+    };
+  }, []);
+
   return (
-    <div className="bg-[#e8f5e9] w-full px-6 md:px-5  py-20 relative overflow-hidden">
+    <div className="px-4 py-12 md:py-24 relative overflow-hidden text-gray-900 bg-white">
+      {/* Decorative Blur Circles */}
+      <div className="absolute top-16 right-10 w-40 h-40 bg-blue-200 opacity-30 blur-3xl rounded-full z-0" />
+      <div className="absolute bottom-0 left-0 w-52 h-52 bg-green-200 opacity-30 blur-3xl rounded-full z-0" />
 
-      {/* Decorative Background */}
-      <div className="absolute bottom-5 right-10 opacity-10 pointer-events-none select-none">
-        <img
-          src="https://i.ibb.co/xsG3Gy4/wave1.png"
-          alt="decor"
-          className="w-24 rotate-180 animate-pulse"
-        />
-      </div>
-
-      {/* Content */}
-      <div className="max-w-full mx-auto flex flex-col items-start space-y-10">
-
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-3xl md:text-6xl font-extrabold leading-tight text-gray-900"
-        >
-          Empowering the Future with{" "}
-          <span className="bg-gradient-to-r from-green-600 to-green-400 text-transparent bg-clip-text">
-            Artificial Intelligence & Robotics
-          </span>
-        </motion.h1>
-
-        {/* Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-gray-700 text-lg md:text-xl max-w-3xl leading-relaxed"
-        >
-          Learn with real-world content and inspiring technology to shape tomorrow.
-        </motion.p>
-
-        {/* Videos */}
+      <div className="max-w-full mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-12">
+        {/* Left Side */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
+          className="w-full lg:w-1/2"
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          {/* Video 1 */}
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.015] border border-green-200 hover:border-green-400"
-          >
-            <iframe
-              width="100%"
-              height="315"
-              src="https://www.youtube.com/embed/JcXKbUIebrU?si=WqUKH0PIFQjssS3s"
-              title="Generative AI"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="w-full h-56 md:h-72"
-            ></iframe>
-          </motion.div>
+          <div className="bg-white rounded-3xl p-6 md:p-8 shadow-xl w-full">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-gradient-to-r from-green-500 to-blue-500 w-8 h-1 rounded-full" />
+              <span className="text-sm font-medium text-green-600">FUTURE TECH EDUCATION</span>
+            </div>
 
-          {/* Video 2 */}
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-[1.015] border border-green-200 hover:border-green-400"
-          >
-            <iframe
-              width="100%"
-              height="315"
-              src="https://www.youtube.com/embed/htjRUL3neMg?si=evl2g0_Ecr8753VZ"
-              title="Robotics & Automation"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              className="w-full h-56 md:h-72"
-            ></iframe>
-          </motion.div>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-snug md:leading-tight">
+              Master <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-500">AI & Robotics</span><br />
+              with Real-World Projects
+            </h1>
+
+            <p className="text-base md:text-lg text-gray-600 mb-8">
+              Hands-on experience with expert-led training, flexible scheduling, and job-ready portfolio building.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button className="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-semibold shadow hover:from-green-600 hover:to-green-700 transition-all">
+                Explore Courses
+              </button>
+              <button className="px-6 py-3 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-green-500 transition-all">
+                View Curriculum
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Right Side: Lottie */}
+        <motion.div
+          className="w-full lg:w-1/2 flex justify-center items-center"
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div
+            ref={aiRef}
+            className="w-full max-w-[600px] h-[280px] sm:h-[320px] md:h-[380px] lg:h-[460px]"
+          />
         </motion.div>
       </div>
     </div>

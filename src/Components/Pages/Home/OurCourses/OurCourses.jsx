@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { Link } from 'react-router-dom';
 
 const OurCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -39,17 +40,26 @@ const OurCourses = () => {
             </span>
             <span className="text-blue-600 text-lg font-bold">৳ {course.price}</span>
           </div>
-          <div className="flex items-center gap-4 mt-2">
-            <img
-              src={course.instructor?.photo}
-              alt={course.instructor?.name}
-              className="w-12 h-12 rounded-full border border-blue-100 object-cover shadow"
-            />
-            <div>
-              <p className="text-md font-semibold text-gray-800">{course.instructor?.name}</p>
-              <p className="text-sm text-gray-500">{course.instructor?.specialist}</p>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-4 p-4 rounded-xl border border-gray-200 shadow-sm bg-white">
+            <div className="flex items-center gap-4">
+              <img
+                src={course.instructor?.photo}
+                alt={course.instructor?.name}
+                className="w-14 h-14 rounded-full border border-blue-200 object-cover shadow-md"
+              />
+              <div>
+                <p className="text-base font-semibold text-gray-800">{course.instructor?.name}</p>
+                <p className="text-sm text-gray-500">{course.instructor?.specialist}</p>
+              </div>
             </div>
+
+            <Link to={`/courses/${course._id}`}>
+              <button className="md:h-10 md:w-28 border-none bg-gray-100  sm:mt-0 max-sm:mt-2 max-sm:py-2 max-sm:w-full  rounded-2xl border border-blue-500 text-blue-600 font-medium hover:bg-blue-50 transition duration-200">
+                Enroll Now
+              </button>
+            </Link>
           </div>
+
         </div>
       </div>
     </div>
@@ -105,9 +115,9 @@ const OurCourses = () => {
 
       <section className="py-20 px-4 bg-white">
         <div className="max-w-full mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">Featured Courses</h2>
-          <p className="text-center text-gray-500 max-w-3xl mx-auto mb-12">
-            Explore our professional courses built for future-ready skills. From AI to Robotics, learn from top mentors with real-world experience.
+          <h2 className="text-4xl font-bold text-start text-gray-800 mb-4">Shaping the innovators of tomorrow.</h2>
+          <p className="text-start text-gray-500  max-w-2xl  mb-12">
+            We offer comprehensive AI education programs designed to equip individuals with the skills to harness the power of artificial intelligence.
           </p>
 
           {/* Grid view for md and up */}

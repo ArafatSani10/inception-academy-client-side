@@ -12,6 +12,7 @@
   "dependencies": {
     "framer-motion": "^12.18.1",
     "localforage": "^1.10.0",
+    "lottie-react": "^2.4.1",
     "match-sorter": "^8.0.3",
     "react": "^19.1.0",
     "react-countup": "^6.5.3",
