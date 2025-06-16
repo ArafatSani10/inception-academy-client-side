@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Banner = () => {
   return (
-    <div className="bg-[#e8f5e9] w-full px-6 md:px-16 py-20 relative overflow-hidden">
+    <div className="bg-[#e8f5e9] w-full px-6 md:px-5  py-20 relative overflow-hidden">
 
       {/* Decorative Background */}
       <div className="absolute bottom-5 right-10 opacity-10 pointer-events-none select-none">

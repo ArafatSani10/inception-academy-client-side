@@ -17,15 +17,8 @@ const HappyStudents = ({ studentCount = 100 }) => {
   };
 
   return (
-    <section ref={ref} className="py-20 px-6 md:px-12 bg-gray-50">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="text-2xl md:text-4xl  font-extrabold text-center mb-16 text-gray-900 tracking-tight"
-      >
-        Our Proud Achievements
-      </motion.h2>
+    <section ref={ref} className="py-20 px-6 md:px-5 bg-[#e8f5e9]">
+     
 
       <div className="max-w-full mx-auto grid gap-10 md:grid-cols-3">
         {[
@@ -41,7 +34,7 @@ const HappyStudents = ({ studentCount = 100 }) => {
           {
             icon: FaChalkboardTeacher,
             title: "Expert Instructors",
-            count: 5,
+            count: 3,
             description: "Learn from industry professionals and educators.",
             borderColor: "border-green-400",
             iconColor: "text-green-600",
@@ -49,7 +42,7 @@ const HappyStudents = ({ studentCount = 100 }) => {
           {
             icon: FaVideo,
             title: "Video Courses",
-            count: 12,
+            count: 3,
             description: "Engaging and clear tutorials for every topic.",
             borderColor: "border-purple-400",
             iconColor: "text-purple-600",
@@ -65,7 +58,7 @@ const HappyStudents = ({ studentCount = 100 }) => {
               variants={cardVariants}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              className={`bg-white rounded-lg border-2 ${borderColor} p-4 text-center shadow-md hover:shadow-lg transition-shadow duration-300 cursor-default transform hover:scale-105`}
+              className={` rounded-lg border-2 ${borderColor} p-4 text-center shadow-md hover:shadow-lg transition-shadow duration-300 cursor-default transform hover:scale-105`}
             >
               <div
                 className={`inline-flex items-center justify-center w-10 h-10 mb-6 rounded-full bg-gradient-to-tr from-gray-100 to-gray-200 ${iconColor}`}

@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-gray-800 border-t border-gray-200 px-6 md:px-14 py-20">
+    <footer className="bg-white text-gray-800 border-t border-gray-200 px-6 md:px-5 py-20">
       <div className="max-w-full mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
         {/* Logo & About */}
@@ -17,9 +17,9 @@ const Footer = () => {
           <img
             src="https://i.ibb.co/bfRfmnh/506449397-122099659574908092-5042721577538220121-n.jpg"
             alt="Inception Academy"
-            className="w-40 mb-4 "
+            className="w-40 -mt-10 "
           />
-          <p className="text-gray-600 text-base leading-relaxed">
+          <p className="text-gray-600 -mt-5 text-base leading-relaxed">
             Inception Academy is building future-ready freelancers with skills in AI, Robotics & Modern Tech. Our mission: Empowering Bangladesh through education.
           </p>
           <div className="flex space-x-3 mt-6">

@@ -4,6 +4,7 @@ import OurCommiunity from './OurCommiunity/OurCommiunity';
 import Testimonials from './StudentsTestimonials/Testimonials';
 import HappyStudents from './HappyStudents/HappyStudents';
 import WhatYouLearn from './WhatYouLearn/WhatYouLearn';
+import OurCourses from './OurCourses/OurCourses';
 
 const Home = () => {
     return (
@@ -11,6 +12,8 @@ const Home = () => {
             <Banner></Banner>
             
             <HappyStudents></HappyStudents>
+
+            <OurCourses></OurCourses>
             <Testimonials></Testimonials>
             <OurCommiunity></OurCommiunity>
             <WhatYouLearn></WhatYouLearn>

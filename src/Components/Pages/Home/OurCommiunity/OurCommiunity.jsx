@@ -27,7 +27,7 @@ const OurCommunity = () => {
   ];
 
   return (
-    <div className="py-16 px-4 md:px-10 max-w-full mx-auto">
+    <div className="py-16 px-4  max-w-full mx-auto">
         <div className="text-center my-5">
             <h1 className="md:text-4xl text-2xl font-bold">Join Our Community</h1>
             <p className="max-w-5xl mt-3 text-lg mx-auto">Join our students  Community where you will find every single proves of their Earnings and activities.</p>
