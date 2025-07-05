@@ -1,15 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaClock, FaChartLine, FaCheckCircle, FaChevronLeft, FaTimes, FaGraduationCap, FaLaptop, FaUserGraduate, FaStar } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AuthContext } from '../../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import useCart from '../../../../hooks/useCart';
 
 const CourseDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
+
     const [error, setError] = useState(null);
     const [showInstructor, setShowInstructor] = useState(false);
+
+    const [,refetch] = useCart();
+
+    const { user } = useContext(AuthContext);
+
+    const handleAddToCart = (course) => {
+        if (user && user.email) {
+            const cartItem = {
+                courseId: course._id,
+                email: user.email,
+                title: course.title,
+                price: course.price
+            };
+
+            axios.post('http://localhost:5000/carts', cartItem)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        // 
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `${course.title} Cart Added to the cart section `,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        // refetch card
+
+                        refetch();
+
+                    }
+                })
+            console.log("Cart Item:", cartItem);
+            // You can send this to backend with axios later if needed
+        } else {
+            Swal.fire({
+                title: "You are not logged in?",
+                text: "Please login to add to the cart!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, login!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login');
+                }
+            });
+        }
+    };
+
 
     useEffect(() => {
         const fetchCourse = async () => {
@@ -375,11 +432,12 @@ const CourseDetails = () => {
                                             <span className="text-2xl font-bold">৳ {course.price || "4,999"}</span>
                                         </div>
                                         <motion.button
+                                            onClick={() => handleAddToCart(course)}
                                             whileHover={{ scale: 1.03 }}
                                             whileTap={{ scale: 0.98 }}
-                                            className="w-full bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-4 rounded-lg transition-colors shadow-md"
+                                            className="w-full bg-white text-black hover:bg-gray-100 font-bold py-3 px-4 rounded-lg transition-colors shadow-md"
                                         >
-                                            Enroll Now
+                                            Add To Cart
                                         </motion.button>
                                         <div className="text-center text-blue-100 text-sm">
                                             30-Day Money-Back Guarantee

@@ -45,9 +45,15 @@ const Testimonials = () => {
 
   return (
     <div className="relative bg-gradient-to-b from-teal-50 to-white py-24 overflow-hidden px-4 md:px-10 lg:px-20">
-      <h2 className="text-2xl md:text-4xl  font-extrabold text-center mb-16 text-teal-800 drop-shadow-md">
-        What Our Learners Say
-      </h2>
+      <div className="mb-16">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-start text-teal-800 drop-shadow-md">
+          Hear From Our Learners
+        </h2>
+        <p className="mt-2 text-base md:text-lg text-gray-600 max-w-xl">
+          Real voices. Real experiences. Discover how our courses have empowered learners around the world to grow their skills and achieve their goals.
+        </p>
+      </div>
+
 
       {/* Top Row - Scroll Left */}
       <div className="overflow-hidden relative mb-16">

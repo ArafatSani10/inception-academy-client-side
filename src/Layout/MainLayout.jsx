@@ -5,7 +5,7 @@ import Footer from '../Components/Pages/shared/Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div className='font-inter max-w-[1500px] mx-auto'>
+        <div className='font-montserrat max-w-full p-5   mx-auto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

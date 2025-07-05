@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     FaBars,
@@ -12,9 +12,11 @@ import {
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import Search from '../Search/Search';
+import { AuthContext } from '../../../../providers/AuthProvider';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {user} = useContext(AuthContext);
 
     // scroll lock when menu open
     useEffect(() => {
@@ -56,20 +58,20 @@ const Navbar = () => {
     };
 
     return (
-        <div className="w-full ">
+        <div className="w-full   ">
             {/* Search bar */}
-            <div className="max-w-full  mx-auto px-4 md:px-8 py-1">
+            <div className="max-w-full   mx-auto px-4 md:px-8 py-1">
                 <Search />
             </div>
 
             {/* Navbar */}
-            <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-300 shadow-sm py-2 px-4 flex items-center justify-between">
+            <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-300  py-2 px-4 flex items-center justify-between">
                 {/* Logo */}
                 <NavLink to="/" onClick={closeMenu} className="flex-shrink-0">
                     <img
                         src="https://i.ibb.co/bfRfmnh/506449397-122099659574908092-5042721577538220121-n.jpg"
                         alt="Logo"
-                        className="w-[110px] object-cover"
+                        className="w-[130px] object-cover"
                         draggable={false}
                     />
                 </NavLink>

@@ -43,7 +43,7 @@ const Banner = () => {
       <div className="absolute top-16 right-10 w-40 h-40 bg-blue-200 opacity-30 blur-3xl rounded-full z-0" />
       <div className="absolute bottom-0 left-0 w-52 h-52 bg-green-200 opacity-30 blur-3xl rounded-full z-0" />
 
-      <div className="max-w-full mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-12">
+      <div className="max-w-full mx-auto relative z-10 flex flex-col-reverse lg:flex-row items-center gap-12">
         {/* Left Side */}
         <motion.div
           className="w-full lg:w-1/2"
